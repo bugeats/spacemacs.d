@@ -22,7 +22,6 @@
      react
      redshift
      syntax-checking
-     themes-megapack
      theming
      version-control
      vimscript
