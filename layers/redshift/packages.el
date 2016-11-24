@@ -4,7 +4,7 @@
 ;; URL: https://github.com/bugeats
 
 (defconst redshift-packages
-  '(paren-face hiwin spacemacs-theme)
+  '(paren-face hiwin)
   )
 
 (defun redshift/init-paren-face ()
@@ -15,18 +15,14 @@
     (progn
       (setq paren-face-regexp (rx (any "{}();<>,`''=\".")))
       (global-paren-face-mode t)
-      (custom-set-faces
-       `(parenthesis ((t (:foreground ,p-a2)))))
       )))
 
 (defun redshift/init-hiwin ()
   (use-package hiwin
     :config
-    (hiwin-activate)
-    ;; Yay this works
-    (custom-set-faces
-     ;; hiwin-face is windows that don't have focus
-     `(hiwin-face ((t (:background ,p-a5))) t)
-     )
-  )
-)
+    (progn
+      (hiwin-activate)
+      ;; TODO where should this actually live?
+      (redshift/clobber-faces)
+      (redshift/clobber-spacemacs)
+      )))
