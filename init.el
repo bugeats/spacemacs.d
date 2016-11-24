@@ -139,6 +139,21 @@
   (setq neo-theme 'nerd)
   (setq neo-vc-integration '(face char)) ; show git status
   (setq neo-smart-open t) ; Every time when the neotree window is opened, let it find current file and jump to node.
+  (setq neo-vc-state-char-alist
+    '((up-to-date       . ?\s)
+      (edited           . ?*)
+      (added            . ?+)
+      (removed          . ?-)
+      (missing          . ?!)
+      (needs-merge      . ?M)
+      (conflict         . ?!)
+      (unlocked-changes . ?!)
+      (needs-update     . ?U)
+      (ignored          . ?\s)
+      (user             . ?U)
+      (unregistered     . ?\s)
+      (nil              . ?\s))
+    )
 
   (add-hook 'hack-local-variables-hook (lambda () (setq truncate-lines t))) ; disable text folding everwhere
 
