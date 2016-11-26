@@ -136,6 +136,8 @@
   (setq git-gutter-fr+-side 'left-fringe) ; git gutter marks near the line numbers
   (setq powerline-default-separator 'nil)
 
+  (setq sp-show-pair-delay 0)
+
   (setq neo-theme 'nerd)
   (setq neo-vc-integration '(face char)) ; show git status
   (setq neo-smart-open t) ; Every time when the neotree window is opened, let it find current file and jump to node.

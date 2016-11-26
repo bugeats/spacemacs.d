@@ -22,7 +22,4 @@
     :config
     (progn
       (hiwin-activate)
-      ;; TODO where should this actually live?
-      (redshift/clobber-faces)
-      (redshift/clobber-spacemacs)
       )))
