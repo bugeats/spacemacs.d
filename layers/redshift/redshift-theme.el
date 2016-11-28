@@ -88,17 +88,17 @@
 
    ;; Set faces
    (custom-theme-set-faces 'redshift
-    `(default                 ((t (:foreground ,p-d1 :background ,p-a6))))
+    `(default                 ((t (:foreground ,p-d1 :background ,p-a6 :weight normal))))
 
     `(sp-show-pair-match-face ((t (:foreground ,p-k1))))
     `(parenthesis             ((t (:foreground ,p-a2))))
 
-    `(font-lock-builtin-face       ((t (:foreground ,p-b1))))
+    `(font-lock-builtin-face       ((t (:foreground ,p-d1))))
     `(font-lock-comment-face       ((t (:foreground ,p-d2))))
     `(font-lock-constant-face      ((t (:foreground ,p-b1))))
     `(font-lock-doc-face           ((t (:foreground ,p-g1))))
     `(font-lock-function-name-face ((t (:foreground ,p-b1))))
-    `(font-lock-keyword-face       ((t (:foreground ,p-b1))))
+    `(font-lock-keyword-face       ((t (:foreground ,p-b1 :weight normal))))
     `(font-lock-negation-char-face ((t (:foreground ,p-b1))))
     `(font-lock-preprocessor-face  ((t (:foreground ,p-b1))))
     `(font-lock-reference-face     ((t (:foreground ,p-b1))))
@@ -106,6 +106,8 @@
     `(font-lock-type-face          ((t (:foreground ,p-b1))))
     `(font-lock-variable-name-face ((t (:foreground ,p-b1))))
     `(font-lock-warning-face       ((t (:foreground ,p-k1))))
+
+    `(hl-todo         ((t (:foreground ,p-k2 :background ,p-k4))))
 
 ;;; chrome
     `(hl-line         ((t (:background ,p-a5))))

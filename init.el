@@ -49,7 +49,8 @@
   "
   (setq-default
 
-   dotspacemacs-default-font '("Droid Sans Mono" :size 13 :weight normal :width normal :powerline-scale 1)
+   ;; dotspacemacs-default-font '("Droid Sans Mono" :size 13 :weight normal :width normal :powerline-scale 1)
+   dotspacemacs-default-font '("DejaVu Sans Mono" :size 13 :weight normal :width normal :powerline-scale 1)
    dotspacemacs-startup-banner 'nil
    dotspacemacs-display-default-layout t
    dotspacemacs-fullscreen-at-startup t
