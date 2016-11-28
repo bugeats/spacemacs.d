@@ -1,6 +1,26 @@
 ;; Filename: redshift-theme.el
 
- (deftheme redshift "Mellow and smooth")
+(deftheme redshift "Mellow and smooth")
+
+(define-fringe-bitmap 'left-arrow
+  [#b00000000
+   #b00000010
+   #b00000110
+   #b00001110
+   #b00011110
+   #b00111110
+   #b01111110
+   #b00000000])
+
+(define-fringe-bitmap 'right-arrow
+  [#b00000000
+   #b01000000
+   #b01100000
+   #b01110000
+   #b01111000
+   #b01111100
+   #b01111110
+   #b00000000])
 
  (let (
        (p-a1 "#d8af8e")
@@ -39,27 +59,24 @@
        (p-t4 "#363f3c")
        (p-t5 "#282c2b")
        (p-t6 "#242625")
+
+       (sol-base03  "#002b36")
+       (sol-base02  "#073642")
+       (sol-base01  "#586e75")
+       (sol-base00  "#657b83")
+       (sol-base0   "#839496")
+       (sol-base1   "#93a1a1")
+       (sol-base2   "#eee8d5")
+       (sol-base3   "#fdf6e3")
+       (sol-yellow  "#b58900")
+       (sol-orange  "#cb4b16")
+       (sol-red     "#dc322f")
+       (sol-magenta "#d33682")
+       (sol-violet  "#6c71c4")
+       (sol-blue    "#268bd2")
+       (sol-cyan    "#2aa198")
+       (sol-green   "#859900")
        )
-
-   (define-fringe-bitmap 'left-arrow
-     [#b00000000
-      #b00000010
-      #b00000110
-      #b00001110
-      #b00011110
-      #b00111110
-      #b01111110
-      #b00000000])
-
-    (define-fringe-bitmap 'right-arrow
-      [#b00000000
-       #b01000000
-       #b01100000
-       #b01110000
-       #b01111000
-       #b01111100
-       #b01111110
-       #b00000000])
 
     (defface wut
       `(
@@ -128,6 +145,19 @@
 
     `(helm-source-header ((t (:foreground ,p-a1 :background ,p-a6 :underline t))))
     `(helm-selection ((t (:foreground ,p-d1 :background ,p-k4))))
+
+    `(term               ((t (:foreground ,p-a1 :background nil))))
+    `(term-bold          ((t (:foreground ,p-d1))))
+    `(term-color-black   ((t (:foreground ,p-d1))))
+    `(term-color-blue    ((t (:foreground ,sol-blue))))
+    `(term-color-cyan    ((t (:foreground ,sol-cyan))))
+    `(term-color-green   ((t (:foreground ,sol-green))))
+    `(term-color-magenta ((t (:foreground ,sol-magenta))))
+    `(term-color-red     ((t (:foreground ,sol-red))))
+    `(term-color-white   ((t (:foreground ,p-d1))))
+    `(term-color-yellow  ((t (:foreground ,sol-yellow))))
+    `(term-underline     ((t (:foreground ,p-d1))))
+
     )
 
    ;; Set variables
