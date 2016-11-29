@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: t -*-
 ;; Filename: redshift-theme.el
 
 (deftheme redshift "Mellow and smooth")
@@ -102,6 +103,43 @@
    ;; TODO does this work?
    (mapcar (lambda(fb) (set-fringe-bitmap-face fb 'wut))
            fringe-bitmaps)
+
+   (defun clobber (face-args face-names)
+     (mapcar (lambda (name)
+               (custom-theme-set-faces 'redshift
+                                       `(,name ((t ,face-args)))
+                                       )
+               )
+             face-names
+             )
+     )
+
+   (clobber
+    `(:foreground ,p-a2 :background nil :weight normal)
+    '(
+      neo-banner-face
+      neo-button-face
+      neo-dir-link-face
+      neo-expand-btn-face
+      neo-file-link-face
+      neo-header-face
+      neo-root-dir-face
+      neo-vc-added-face
+      neo-vc-conflict-face
+      neo-vc-default-face
+      neo-vc-edited-face
+      neo-vc-ignored-face
+      neo-vc-missing-face
+      neo-vc-needs-merge-face
+      neo-vc-needs-update-face
+      neo-vc-removed-face
+      neo-vc-unlocked-changes-face
+      neo-vc-unregistered-face
+      neo-vc-up-to-date-face
+      neo-vc-user-face
+      )
+    )
+
 
    ;; Set faces
    (custom-theme-set-faces 'redshift
