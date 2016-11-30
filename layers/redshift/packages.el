@@ -13,7 +13,9 @@
     :commands (global-paren-face-mode)
     :config
     (progn
-      (setq paren-face-regexp (rx (any "{}();<>,`''=\".")))
+      (setq paren-face-regexp (rx (any "{}()[]:;<>,`'=\".")))
+      (add-to-list 'paren-face-modes 'js-mode)
+      (add-to-list 'paren-face-modes 'j2-mode)
       (global-paren-face-mode t))))
 
 

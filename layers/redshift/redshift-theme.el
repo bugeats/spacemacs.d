@@ -23,6 +23,9 @@
    #b01111110
    #b00000000])
 
+(font-lock-add-keywords 'emacs-lisp-mode
+                        '(("mapcar" . font-lock-keyword-face)))
+
 (let (
       (p-a1 "#d8af8e") (p-a2 "#a57b55") (p-a3 "#645851") (p-a4 "#413c39") (p-a5 "#2d2b29") (p-a6 "#272524")
       (p-b1 "#94c390") (p-b2 "#5d9058") (p-b3 "#525e51") (p-b4 "#393e39") (p-b5 "#2a2c29") (p-b6 "#242624")
@@ -41,7 +44,7 @@
       (sol-green   "#859900"))
 
 
-  (defface wut
+  (defface redshift-fringe-bitmap
     `(
       (((class color) (min-colors 88) (background light))
        :foreground ,p-a3
@@ -59,18 +62,64 @@
        :foreground ,p-a3
        :background ,p-a5)
       (t :inverse-video t))
-    "wut"
+    "Any fring bitmap"
     :group 'basic-faces)
 
-  ;; TODO does this work?
-  (mapcar (lambda(fb) (set-fringe-bitmap-face fb 'wut))
+  ;; Override assigned face for all fringe bitmaps
+  (mapcar (lambda (fb) (set-fringe-bitmap-face fb 'redshift-fringe-bitmap))
           fringe-bitmaps)
 
+  ;; Helper to group theme faces by type
   (defun clobber (face-args face-names)
     (mapcar (lambda (name)
               (custom-theme-set-faces 'redshift
                                       `(,name ((t ,face-args)))))
             face-names))
+
+  ;; Default -------------------------------------------------------------------
+  (clobber
+   `(:foreground ,p-d1 :background nil :weight normal)
+   '(
+     font-lock-function-name-face
+     font-lock-builtin-face
+     font-lock-variable-name-face
+
+     js2-function-param
+     js2-external-variable
+     js2-function-call
+
+     ;; unsorted
+     markdown-blockquote-face
+     markdown-bold-face
+     markdown-comment-face
+     markdown-footnote-face
+     markdown-gfm-checkbox-face
+     markdown-header-delimiter-face
+     markdown-header-face
+     markdown-header-face-1
+     markdown-header-face-2
+     markdown-header-face-3
+     markdown-header-face-4
+     markdown-header-face-5
+     markdown-header-face-6
+     markdown-header-rule-face
+     markdown-highlight-face
+     markdown-inline-code-face
+     markdown-italic-face
+     markdown-language-keyword-face
+     markdown-line-break-face
+     markdown-link-face
+     markdown-link-title-face
+     markdown-list-face
+     markdown-markup-face
+     markdown-math-face
+     markdown-metadata-key-face
+     markdown-metadata-value-face
+     markdown-missing-link-face
+     markdown-reference-face
+     markdown-strike-through-face
+     markdown-url-face))
+
 
   ;; Chrome Default ------------------------------------------------------------
   (clobber
@@ -96,6 +145,15 @@
      neo-vc-unregistered-face
      neo-vc-up-to-date-face
      neo-vc-user-face
+
+     which-key-command-description-face
+     which-key-group-description-face
+     which-key-highlighted-command-face
+     which-key-key-face
+     which-key-local-map-description-face
+     which-key-note-face
+     which-key-separator-face
+     which-key-special-key-face
 
      ;; unsorted
      helm-M-x-key
@@ -149,6 +207,13 @@
      helm-source-header
      helm-visible-mark))
 
+
+  ;; Chrome Actions / Buttons --------------------------------------------------
+  (clobber
+   `(:foreground ,p-a2 :background nil :weight normal :underline t)
+   '(
+     button))
+
   ;; Control Chars -------------------------------------------------------------
   (clobber
    `(:foreground ,p-a2 :background nil :weight normal)
@@ -156,12 +221,6 @@
      parinfer-pretty-parens:dim-paren-face
      parenthesis))
 
-  ;; Default -------------------------------------------------------------------
-  (clobber
-   `(:foreground ,p-d1 :background nil :weight normal)
-   '(
-     font-lock-function-name-face
-     font-lock-builtin-face))
 
   ;; Comments ------------------------------------------------------------------
   (clobber
@@ -216,25 +275,36 @@
      git-gutter:modified
      git-gutter:unchanged))
 
+  ;; Literal -------------------------------------------------------------------
+  (clobber
+   `(:foreground ,p-g1 :background nil :weight normal)
+   '(
+     markdown-pre-face
+     font-lock-string-face))
+
+  ;; Keywords ------------------------------------------------------------------
+  (clobber
+   `(:foreground ,p-b1 :background nil :weight normal)
+   '(
+     font-lock-constant-face
+     font-lock-keyword-face
+     font-lock-negation-char-face
+     font-lock-preprocessor-face
+     font-lock-reference-face
+     font-lock-type-face))
 
   ;; Misc ----------------------------------------------------------------------
   (custom-theme-set-faces 'redshift
                           `(default                 ((t (:foreground ,p-d1 :background ,p-a6 :weight normal))))
 
-                          `(font-lock-constant-face      ((t (:foreground ,p-b1))))
+                          `(highlight-numbers-number ((t (:foreground nil :background nil :weight normal))))
+
+
                           `(font-lock-doc-face           ((t (:foreground ,p-g1))))
-                          `(font-lock-keyword-face       ((t (:foreground ,p-b1 :weight normal))))
-                          `(font-lock-negation-char-face ((t (:foreground ,p-b1))))
-                          `(font-lock-preprocessor-face  ((t (:foreground ,p-b1))))
-                          `(font-lock-reference-face     ((t (:foreground ,p-b1))))
-                          `(font-lock-string-face        ((t (:foreground ,p-g1))))
-                          `(font-lock-type-face          ((t (:foreground ,p-b1))))
-                          `(font-lock-variable-name-face ((t (:foreground ,p-b1))))
                           `(font-lock-warning-face       ((t (:foreground ,p-k1))))
 
                           `(hl-todo         ((t (:foreground ,p-k2 :background ,p-k4))))
 
-;;; chrome
                           `(hl-line         ((t (:background ,p-a5))))
                           `(hiwin-face      ((t (:background "#1A1615")))) ; windows that don't have focus
                           `(vertical-border ((t (:foreground ,p-a3))))
@@ -264,12 +334,8 @@
                           `(term-color-red     ((t (:foreground ,sol-red))))
                           `(term-color-white   ((t (:foreground ,p-d1))))
                           `(term-color-yellow  ((t (:foreground ,sol-yellow))))
-                          `(term-underline     ((t (:foreground ,p-d1)))))
+                          `(term-underline     ((t (:foreground ,p-d1))))))
 
-
-  ;; Set variables
-  (custom-theme-set-variables 'redshift ;; again specify the same theme name...
-                              '(any-variable "wut")))
 
 (provide-theme 'redshift)
 
