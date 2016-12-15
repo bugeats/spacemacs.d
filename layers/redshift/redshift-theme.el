@@ -88,6 +88,8 @@
      js2-external-variable
      js2-function-call
 
+     info-double-quoted-name
+
      ;; unsorted
      markdown-blockquote-face
      markdown-bold-face
@@ -205,13 +207,25 @@
      helm-selection-line
      helm-separator
      helm-source-header
-     helm-visible-mark))
+     helm-visible-mark
+
+     dired-directory
+     dired-flagged
+     dired-header
+     dired-ignored
+     dired-mark
+     dired-marked
+     dired-perm-write
+     dired-symlink
+     dired-warning))
 
 
   ;; Chrome Actions / Buttons --------------------------------------------------
   (clobber
    `(:foreground ,p-a2 :background nil :weight normal :underline t)
    '(
+     info-xref
+     info-xref-visited
      button))
 
   ;; Control Chars -------------------------------------------------------------
